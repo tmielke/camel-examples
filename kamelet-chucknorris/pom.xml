@@ -31,7 +31,7 @@
     <artifactId>camel-example-kamelet-chucknorris</artifactId>
     <packaging>jar</packaging>
     <name>Camel :: Example :: Kamelet :: Chuck Norris</name>
-    <description>How easy it is to use a Kamelet in your Camel application</description>
+    <description>How easy it is to create your own Kamelets</description>
 
     <properties>
         <category>Kamelet</category>
@@ -47,39 +47,20 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <dependency>
-                <groupId>org.apache.camel.kamelets</groupId>
-                <artifactId>camel-kamelets</artifactId>
-                <version>${camel-kamelets-catalog-version}</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 
     <dependencies>
 
-        <!-- main dependencies -->
+        <!-- main to easily run with Kamelets -->
         <dependency>
             <groupId>org.apache.camel</groupId>
-            <artifactId>camel-core</artifactId>
+            <artifactId>camel-kamelet-main</artifactId>
         </dependency>
+        <!-- to use XML DSL -->
         <dependency>
             <groupId>org.apache.camel</groupId>
-            <artifactId>camel-main</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-kamelet</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.camel.kamelets</groupId>
-            <artifactId>camel-kamelets</artifactId>
-        </dependency>
-
-        <!-- to use YAML DSL for route definitions -->
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-yaml-dsl</artifactId>
+            <artifactId>camel-xml-io-dsl</artifactId>
         </dependency>
 
         <!-- these dependencies are used by the kamelet -->
@@ -109,7 +90,6 @@
             <version>${log4j2-version}</version>
             <scope>runtime</scope>
         </dependency>
-
         <!-- for testing -->
         <dependency>
             <groupId>org.apache.camel</groupId>
@@ -125,10 +105,6 @@
                 <groupId>org.apache.camel</groupId>
                 <artifactId>camel-maven-plugin</artifactId>
                 <version>${camel.version}</version>
-                <configuration>
-                    <logClasspath>false</logClasspath>
-                    <mainClass>org.apache.camel.example.MyApplication</mainClass>
-                </configuration>
             </plugin>
         </plugins>
     </build>
